@@ -71,6 +71,8 @@ export default definePlugin({
         const processedSegments = segments.map(segment => {
             if (segment.isCodeBlock) {
                 return segment.text;
+            } else if (!segment.text.match(/\sage\s|\sold\s/)) {
+                return segment.text;
             } else {
                 return segment.text.replace(/\b(1[0-2]|[2-9]|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\b/gi, match => {
                     const lowerMatch = match.toLowerCase();
